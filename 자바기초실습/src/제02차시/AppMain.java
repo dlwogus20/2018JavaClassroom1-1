@@ -7,6 +7,7 @@ class AppMain {
 		System.out.println("자바 프로그램은 나로부터 시작해!");
 
 		new Class01();
+		System.out.println("자바 프로그램은 이제 끝!");
 
 	}
 
