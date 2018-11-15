@@ -131,7 +131,7 @@ public class TetrisWindow extends JFrame implements ActionListener, KeyListener 
 			for (int j = 0; j < 4; j++)
 				회전블록[j][3 - i] = 현재블록[i][j];
 		현재블록 = 회전블록;
-		drawTetrisBoard(this.블록번호, this.현재블록등장위치x, this.현재블록등장위치y);
+		//drawTetrisBoard(this.블록번호, this.현재블록등장위치x, this.현재블록등장위치y);
 
 	}
 
