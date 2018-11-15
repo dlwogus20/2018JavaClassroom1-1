@@ -1,13 +1,18 @@
 package 종합실습과제;
 
 import java.util.Scanner;
-public class 문제05 {
+
+public class 문제29 {
 
 	public static void main(String[] args) {
 		Scanner sc=new Scanner(System.in);
 		int a=sc.nextInt();
-		System.out.println("시간(초):"+a);
-		System.out.printf("%02d시간%d분%d초",a/3600,a/60%60,a%60);
+		int b=sc.nextInt();
+		int c=sc.nextInt();
+		int d,e,f;
+		System.out.printf("자연수 3개: %d %d %d",a,b,c);
+		if(a)
+
 	}
 
 }

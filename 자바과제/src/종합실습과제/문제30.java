@@ -1,18 +1,16 @@
 package 종합실습과제;
 
 import java.util.Scanner;
-public class 문제18 {
+public class 문제30 {
 
 	public static void main(String[] args) {
 		Scanner sc=new Scanner(System.in);
-		String a=sc.next();
-		int b=a.charAt(0);
-		int z='z';
-		for(char i=(char)b;b<=z;b++)
-			System.out.printf("%c ",b);
+		int pro[];
 		
 		
 		
+		
+
 	}
 
 }

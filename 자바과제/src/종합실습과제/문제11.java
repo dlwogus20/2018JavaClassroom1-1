@@ -9,7 +9,7 @@ public class 문제11 {
 		sc.useDelimiter("\r|\n|,");
 		int x1,y1,r1,x2,y2,r2;
 		System.out.println("원(x1,y1,r1):");
-
+gjgjhjhjh
 	}
 
 }
