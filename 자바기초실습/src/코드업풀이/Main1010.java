@@ -1,9 +1,12 @@
 package 코드업풀이;
 
+import java.util.Scanner;
 public class Main1010 {
 
 	public static void main(String[] args) {
-		System.out.println("\"C:\\Download\\hello.cpp\"");
+		Scanner sc=new Scanner(System.in);
+		int a=sc.nextInt();
+		System.out.println(a);
 
 	}
 
