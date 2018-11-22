@@ -21,6 +21,9 @@ public class TetrisWindow extends JFrame implements ActionListener, KeyListener 
 	int[][] 현재블록;
 	int 블록번호, 현재블록등장위치x, 현재블록등장위치y;
 
+	// 4단계
+	int minX, minY, maxX, maxY;
+
 	public TetrisWindow() {
 		this.setTitle("이재현의 테트리스");
 		this.setSize(500, 730);
@@ -115,6 +118,7 @@ public class TetrisWindow extends JFrame implements ActionListener, KeyListener 
 			this.requestFocus();
 		} else if (jb.getText().equals("블록교체")) {
 			this.블록번호 = (this.블록번호 + 1) % 7;
+			this.requestFocus();
 			drawTetrisBoard(this.블록번호, this.현재블록등장위치x, 현재블록등장위치y);
 
 		} else if (jb.getText().equals("블록회전"))
@@ -130,9 +134,42 @@ public class TetrisWindow extends JFrame implements ActionListener, KeyListener 
 		for (int i = 0; i < 4; i++)
 			for (int j = 0; j < 4; j++)
 				회전블록[j][3 - i] = 현재블록[i][j];
-		현재블록 = 회전블록;
-		//drawTetrisBoard(this.블록번호, this.현재블록등장위치x, this.현재블록등장위치y);
+		
+		// 블록내부 조각의 존재 범위를 알아낸다
+		getMinXMinYMaxXMaxY(회전블록);
 
+		// 좌측 하단으로 붙인다.
+		int 좌측이동칸수 = minX;
+		int 하단이동칸수 = 3 - maxY;
+		for (int i = maxY; i >= minY; i--) {
+			for (int j = minX; j <= maxX; j++) {
+				int 값 = 회전블록[i][j];
+				회전블록[i][j] = 0;
+				회전블록[i + 하단이동칸수][j - 좌측이동칸수] = 값;
+				
+			}
+		}
+
+		현재블록 = 회전블록;
+		tb.repaint();
+		tb.revalidate();
+		// drawTetrisBoard(this.블록번호, this.현재블록등장위치x, this.현재블록등장위치y);
+
+	}
+
+	void getMinXMinYMaxXMaxY(int[][] 지금블록) {
+		minX = minY = 9999;
+		maxX = maxY = 0;
+		for (int i = 0; i < 4; i++) {
+			for (int j = 0; j < 4; j++) {
+				if (지금블록[i][j] > 0) {
+					minX = Math.min(minX, j);
+					maxX = Math.max(maxX, j);
+					minY = Math.min(minY, i);
+					maxY = Math.max(maxY, i);
+				}
+			}
+		}
 	}
 
 	public void keyPressed(KeyEvent key) {
@@ -145,14 +182,13 @@ public class TetrisWindow extends JFrame implements ActionListener, KeyListener 
 			break;
 		case KeyEvent.VK_UP:
 			rotateTetrisBlock();
+			this.requestFocus();
 			break;
 		case KeyEvent.VK_DOWN:
 			moveTetrisBlock(0, 1);
 			break;
 		case KeyEvent.VK_SPACE:
 			break;
-		case KeyEvent.VK_ENTER:
-			moveTetrisBlock(0, 16);
 		}
 
 	}
